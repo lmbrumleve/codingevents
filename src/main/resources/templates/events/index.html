@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+<link rel="stylesheet" href="styles.css">
+
 <head th:replace="fragments :: head"></head>
 
 <body class="container">
@@ -7,15 +10,20 @@
 <h1>All Events</h1>
 <nav th:replace="fragments :: navigation"></nav>
 
-<table class="table table-striped">
+<table class = "center">
     <thead>
         <tr>
             <th>Name</th>
+            <th>Description</th>
+            <th>Address</th>
         </tr>
     </thead>
-<tr th:each = "event: ${events}">
+<tr th:each = "event: ${events.keySet()}">
     <td th:text="${event}"></td>
+    <td th:text="${events.get(event)}"></td>
+    <p th:replace="fragments :: address"></p>
 </tr>
+
 </table>
 
 </body>
