@@ -13,15 +13,20 @@
 <table class = "center">
     <thead>
         <tr>
+            <th>ID</th>
             <th>Name</th>
             <th>Description</th>
             <th>Address</th>
         </tr>
     </thead>
-<tr th:each = "event: ${events.keySet()}">
-    <td th:text="${event}"></td>
-    <td th:text="${events.get(event)}"></td>
+<tr th:each = "event: ${events}">
+    <td th:text = ${event.id}></td>
+    <td th:text="${event.name}"></td>
+    <td th:text="${event.description}"></td>
     <p th:replace="fragments :: address"></p>
+    <td>
+        <a th:href="@{/events/edit/{id}(id=${event.id})}">Edit</a>
+    </td>
 </tr>
 
 </table>
